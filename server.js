@@ -62,7 +62,7 @@ app.post("/send-email", async (req, res) => {
               <img src="https://controle-ferias-backend.onrender.com/silimed-logo.png" alt="Logo Silimed" style="max-width: 120px; margin-bottom: 20px;" />
               <h2 style="color: #d9534f; text-align: center;">${tipo} de usuário</h2>
               <p style="font-size: 16px;"><strong>Nome:</strong> ${capitalizar(nome)}</p>
-              <p style="font-size: 16px;"><strong>Função:</strong> ${capitalizarzar(funcao)}</p>
+              <p style="font-size: 16px;"><strong>Função:</strong> ${capitalizar(funcao)}</p>
               <p style="font-size: 16px;">
                 <strong>Status:</strong> 
                 <span style="color: ${status === 'bloqueado' ? '#d9534f' : '#5cb85c'}; font-weight: bold;">
