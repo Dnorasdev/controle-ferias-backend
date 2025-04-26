@@ -40,7 +40,7 @@ app.post("/send-email", async (req, res) => {
       to: process.env.DESTINATION_EMAIL, // Pode ser o próprio usuário ou outro administrador
       subject: `Atualização de Status: ${nome}`,
       html: `
-        <h1>Atualização de Férias</h1>
+        <h1>Atualização de Status</h1>
         <p><strong>Nome:</strong> ${nome}</p>
         <p><strong>Função:</strong> ${funcao}</p>
         <p><strong>Status:</strong> ${status}</p>
