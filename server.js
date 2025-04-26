@@ -5,6 +5,20 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 // Configurações iniciais
+
+function capitalizar(nome) {
+  const palavrasMinusculas = ['de', 'da', 'do', 'dos', 'das', 'e'];
+  return nome
+    .toLowerCase()
+    .split(' ')
+    .map((palavra, index) =>
+      palavrasMinusculas.includes(palavra) && index !== 0
+        ? palavra
+        : palavra.charAt(0).toUpperCase() + palavra.slice(1)
+    )
+    .join(' ');
+}
+
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -49,7 +63,7 @@ app.post("/send-email", async (req, res) => {
                <img src="https://controle-ferias-backend.onrender.com/logo.png" alt="Logo Silimed" style="max-width: 120px; margin-bottom: 20px;" />
 
               <h2 style="color: #d9534f; text-align: center;">${tipo} de usuário</h2>
-              <p style="font-size: 16px;"><strong>Nome:</strong> ${nome}</p>
+              <p style="font-size: 16px;"><strong>Nome:</strong> ${capitalizar(nome)}</p>
               <p style="font-size: 16px;"><strong>Função:</strong> ${funcao}</p>
               <p style="font-size: 16px;">
                 <strong>Status:</strong> 
