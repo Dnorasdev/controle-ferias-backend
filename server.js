@@ -27,7 +27,8 @@ app.post("/send-email", async (req, res) => {
   }
 
   try {
-    const transporter = nodemailer.createTransport({
+    console.log("📥 Dados recebidos pelo backend:", { nome, funcao, status, tipo });
+     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: process.env.EMAIL_USER,
