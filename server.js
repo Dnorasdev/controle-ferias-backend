@@ -58,10 +58,8 @@ app.post("/send-email", async (req, res) => {
         <html>
           <body style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 30px;">
             <div style="max-width: 600px; margin: auto; background-color: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 20px;">
-              <div style="text-align: center;"><img src="https://github.com/Dnorasdev/controle-ferias-backend/blob/main/public/logo-silimed.png" alt="Logo Silimed" style="max-width: 120px; margin-bottom: 20px;" />
-
-               <img src="https://controle-ferias-backend.onrender.com/logo.png" alt="Logo Silimed" style="max-width: 120px; margin-bottom: 20px;" />
-
+              <div style="text-align: center;">
+              <img src="https://controle-ferias-backend.onrender.com/logo.png" alt="Logo Silimed" style="max-width: 120px; margin-bottom: 20px;" />
               <h2 style="color: #d9534f; text-align: center;">${tipo} de usuário</h2>
               <p style="font-size: 16px;"><strong>Nome:</strong> ${capitalizar(nome)}</p>
               <p style="font-size: 16px;"><strong>Função:</strong> ${funcao}</p>
