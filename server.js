@@ -20,15 +20,15 @@ app.get("/", (req, res) => {
 
 // Rota para envio de e-mail
 app.post("/send-email", async (req, res) => {
-  const { nome, funcao, status } = req.body;
+  const { nome, funcao, status, tipo } = req.body; // <-- Corrigido
 
-  if (!nome || !funcao || !status) {
+  if (!nome || !funcao || !status || !tipo) {
     return res.status(400).json({ message: "Dados incompletos." });
   }
 
   try {
     const transporter = nodemailer.createTransport({
-      service: "gmail", // ou outro serviço como outlook, zoho...
+      service: "gmail",
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
@@ -41,28 +41,10 @@ app.post("/send-email", async (req, res) => {
       subject: `⚠️ ${tipo} de ${nome}`,
       html: `
         <div style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 30px;">
-          <div style="max-width: 600px; margin: auto; background-color: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 20px;">
-            <div style="text-align: center;">
-              <img src="https://controle-ferias-api.onrender.com/logo.png" alt="Logo Silimed" style="max-width: 120px; margin-bottom: 20px;" />
-            </div>
-            <h2 style="color: #d9534f; text-align: center;">${tipo} de usuário</h2>
-            <p style="font-size: 16px;"><strong>Nome:</strong> ${nome}</p>
-            <p style="font-size: 16px;"><strong>Função:</strong> ${funcao}</p>
-            <p style="font-size: 16px;">
-              <strong>Status:</strong> 
-              <span style="color: ${status === 'bloqueado' ? '#d9534f' : '#5cb85c'}; font-weight: bold;">
-                ${status.charAt(0).toUpperCase() + status.slice(1)}
-              </span>
-            </p>
-            <hr style="margin: 20px 0;" />
-            <p style="font-size: 14px; color: #888; text-align: center;">
-              Este e-mail foi enviado automaticamente pelo sistema de controle de férias.<br/>
-              Por favor, não responda.
-            </p>
-          </div>
+          <!-- Corpo HTML todo aqui -->
         </div>
       `
-    };    
+    };
 
     await transporter.sendMail(mailOptions);
 
